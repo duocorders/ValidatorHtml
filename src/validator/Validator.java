@@ -13,7 +13,7 @@ public class Validator {
     private final StringBuilder report = new StringBuilder();
 
     public boolean validate(String path) {
-        Stack<String> stack = new Stack<>(500);
+        Stack<String> stack = new Stack<String>();
         int lineNum = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {

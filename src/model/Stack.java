@@ -1,28 +1,51 @@
 package model;
-public class Stack<T> {
-    private final Object[] elements;
-    private int top;
 
-    public Stack(int capacity) {
-        elements = new Object[capacity];
-        top = -1;
+import model.interfaces.IStack;
+import model.utils.EmptyStackException;
+
+public class Stack<T> implements IStack<T> {
+    private ChainedList<T> list = new ChainedList<T>();
+
+    @Override
+    public void push(T info) {
+        list.insert(info);
     }
 
-    public void push(T item) {
-        elements[++top] = item;
-    }
-
-    @SuppressWarnings("unchecked")
+    @Override
     public T pop() {
-        return (T) elements[top--];
+        T value;
+        value = peek();
+
+        list.remove(value);
+
+        return value;
     }
 
-    @SuppressWarnings("unchecked")
+    @Override
     public T peek() {
-        return (T) elements[top];
+        if(isEmpty())
+            throw new EmptyStackException();
+        return list.getFirst().getInfo();
     }
 
+    @Override
     public boolean isEmpty() {
-        return top == -1;
+        return list.isEmpty();
+    }
+
+    @Override
+    public void release() {
+        list = new ChainedList<>();
+
+        try{
+            while (true) {
+                pop();
+            }
+        }catch (EmptyStackException e){
+        }
+    }
+
+    public String toString(){
+        return list.toString();
     }
 }
