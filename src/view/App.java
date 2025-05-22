@@ -1,7 +1,8 @@
 package view;
 
 import javax.swing.*;
-import model.tags.TagInfo;
+
+import model.tag.TagInfo;
 import validator.Validator;
 import java.awt.*;
 

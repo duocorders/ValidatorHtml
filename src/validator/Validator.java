@@ -3,10 +3,10 @@ package validator;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Arrays;
-import model.stacks.Stack;
-import model.tags.TagCounter;
-import utils.Util;
 
+import model.stack.Stack;
+import model.tag.TagCounter;
+import util.Util;
 public class Validator {
     private final String[] singletons = {
         "meta", "base", "br", "col", "command", "embed", "hr", "img", "input",

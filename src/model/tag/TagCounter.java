@@ -1,4 +1,4 @@
-package model.tags;
+package model.tag;
 
 import java.util.ArrayList;
 import java.util.List;

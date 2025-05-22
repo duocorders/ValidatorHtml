@@ -1,4 +1,4 @@
-package model.utils;
+package util;
 
 public class Util {
     public static String extractTagName(String tag) {

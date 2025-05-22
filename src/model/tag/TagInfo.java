@@ -1,7 +1,13 @@
-package model;
-public class TagInfo {
+package model.tag;
+
+public class TagInfo implements Comparable<TagInfo> {
     private final String name;
     private int count;
+
+    @Override
+    public int compareTo(TagInfo other) {
+        return this.name.compareTo(other.name);
+    }
 
     public TagInfo(String name) {
         this.name = name;
@@ -12,11 +18,11 @@ public class TagInfo {
         count++;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public int count() {
+    public int getCount() {
         return count;
     }
 }

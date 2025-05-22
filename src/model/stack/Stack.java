@@ -1,6 +1,6 @@
-package model.stacks;
+package model.stack;
 
-import model.exceptions.EmptyStackException;
+import model.exception.EmptyStackException;
 import model.interfaces.IStack;
 import model.list.LinkedList;
 
