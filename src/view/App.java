@@ -40,13 +40,13 @@ public class App extends JFrame {
             String path = txtCaminho.getText();
             if (!path.isBlank()) {
                 Validator validator = new Validator();
-                boolean ok = validator.validate(path);
+                boolean ok = validator.validar(path);
                 txtResultado.setText(validator.getReport());
 
                 if (ok) {
                     StringBuilder sb = new StringBuilder("Tags encontradas:\n");
-                    for (TagInfo tag : validator.getTagCounter().getSortedTags()) {
-                        sb.append(tag.getName()).append(": ").append(tag.getCount()).append("\n");
+                    for (TagInfo tag : validator.getContadorTag().getTagsOrdenadas()) {
+                        sb.append(tag.getNome()).append(": ").append(tag.getContador()).append("\n");
                     }
                     txtTags.setText(sb.toString());
                 } else {

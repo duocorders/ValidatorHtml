@@ -44,7 +44,7 @@ public class Validator {
                     }
                     
                     int inicioComentario = linha.indexOf("<!--", pos);
-                    if (inicioComentario != -1) { //inicioComentario == linha.indexOf("<", pos)
+                    if (inicioComentario != -1 && inicioComentario == linha.indexOf("<", pos)) {
                         ehComentario = true;
                         pos = inicioComentario + 4;
                         continue;
@@ -167,7 +167,15 @@ public class Validator {
     }
 
     private boolean verificarSingletonTag(String tagCompleta, String tagName) {
-        return tagCompleta.endsWith("/") || Arrays.asList(singletons).contains(tagName);
+        if (tagCompleta.endsWith("/")) {
+            return true;
+        }
+        for (int i = 0; i < singletons.length; i++) {
+            if (singletons[i].equals(tagName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getReport() {
