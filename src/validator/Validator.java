@@ -4,19 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Arrays;
 
-import model.stack.Stack;
-import model.tag.TagCounter;
+import model.stack.PilhaLista;
+import model.tag.ContadorTag;
 import util.Util;
 public class Validator {
     private final String[] singletons = {
         "meta", "base", "br", "col", "command", "embed", "hr", "img", "input",
         "link", "param", "source", "!doctype"
     };
-    private final TagCounter tagCounter = new TagCounter();
+    private final ContadorTag tagCounter = new ContadorTag();
     private final StringBuilder report = new StringBuilder();
 
     public boolean validate(String path) {
-        Stack<String> stack = new Stack<>();
+        PilhaLista<String> stack = new PilhaLista<>();
         int lineNum = 0;
         boolean inComment = false, inScript = false, inStyle = false;
         boolean hasError = false; // Adicione esta variável no início do método
@@ -175,7 +175,7 @@ public class Validator {
         return report.toString();
     }
 
-    public TagCounter getTagCounter() {
+    public ContadorTag getTagCounter() {
         return tagCounter;
     }
 }
