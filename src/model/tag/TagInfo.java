@@ -1,28 +1,28 @@
 package model.tag;
 
 public class TagInfo implements Comparable<TagInfo> {
-    private final String name;
-    private int count;
+    private final String nome;
+    private int contador;
 
     @Override
     public int compareTo(TagInfo other) {
-        return this.name.compareTo(other.name);
+        return this.nome.compareTo(other.nome);
     }
 
-    public TagInfo(String name) {
-        this.name = name;
-        this.count = 1;
+    public TagInfo(String nome) {
+        this.nome = nome;
+        this.contador = 1;
     }
 
-    public void increment() {
-        count++;
+    public void incrementar() {
+        contador++;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public int getCount() {
-        return count;
+    public int getContador() {
+        return contador;
     }
 }

@@ -7,42 +7,42 @@ import model.sort.*;
 public class ContadorTag {
     private final ListaEncadeada<TagInfo> tags = new ListaEncadeada<>();
 
-    public void add(String tag) {
+    public void adicionar(String tag) {
         tag = tag.toLowerCase();
 
         int tamanho = tags.obterComprimento();
         for (int i = 0; i < tamanho; i++) {
             
-            NoLista<TagInfo> nodeTagInfo = tags.obterNo(i);
-            TagInfo tagInfo = nodeTagInfo.obterInfo();
+            NoLista<TagInfo> noTagInfo = tags.obterNo(i);
+            TagInfo tagInfo = noTagInfo.getInfo();
 
-            if (tagInfo.getName().equals(tag)) {
-                tagInfo.increment();
+            if (tagInfo.getNome().equals(tag)) {
+                tagInfo.incrementar();
                 return;
             }
         }
-        tags.insert(new TagInfo(tag));
+        tags.inserir(new TagInfo(tag));
     }
 
-    public TagInfo[] getSortedTags() {
+    public TagInfo[] getTagsOrdenadas() {
         
-        int length = tags.obterComprimento();
-        TagInfo[] array = new TagInfo[length];
+        int tamanho = tags.obterComprimento();
+        TagInfo[] array = new TagInfo[tamanho];
         
-        for (int i = 0; i < length; i++) {
-            array[i] = tags.obterNo(i).obterInfo();
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = tags.obterNo(i).getInfo();
         }
 
-        OrdenacaoAbstract<TagInfo> sorter;
+        OrdenacaoAbstract<TagInfo> ordenador;
 
         if (array.length <= 10) {
-            sorter = new OrdenacaoBolha<TagInfo>();
+            ordenador = new OrdenacaoBolha<TagInfo>();
         } else {
-            sorter = new OrdenacaoQuickSort<TagInfo>();
+            ordenador = new OrdenacaoQuickSort<TagInfo>();
         }
 
-        sorter.setinfo(array); 
-        sorter.sort();
+        ordenador.setInfo(array); 
+        ordenador.ordenar();
         return array;
     }
 }
